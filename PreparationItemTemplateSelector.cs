@@ -2,10 +2,8 @@
 {
     public class PreparationItemTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate OrderHeaderTemplate { get; set; }
-        public DataTemplate OrderLineTemplate { get; set; }
-
-
+        public DataTemplate OrderHeaderTemplate { get; set; } = new DataTemplate(typeof(OrderHeaderItemView));
+        public DataTemplate OrderLineTemplate { get; set; } = new DataTemplate(typeof(OrderLineItemView));
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {

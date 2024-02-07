@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiItemTemplateSelector.OrderHeaderItemView"
+             xmlns:local="clr-namespace:MauiItemTemplateSelector"
+             x:DataType="local:OrderHeaderItemList">
+    <Border Margin="1"
+            Background="White"
+            Padding="4">
+        <FlexLayout JustifyContent="Start"
+                    AlignItems="Center"
+                    Direction="Row"
+                    Wrap="Wrap">
+            <BoxView Color="{Binding ColorConverter}"
+                     Margin="2,1,2,0"
+                     CornerRadius="1"
+                     WidthRequest="4"
+                     HeightRequest="28"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Start" />
+            <Label Padding="10,0,0,0"
+                   TextColor="Black">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Order,FallbackValue='Undef',StringFormat='{0}'}"></Span>
+                        <Span Text=" "></Span>
+                        <Span Text="{Binding Order.Length,FallbackValue='Undef'}"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="{Binding RemainingQuantity,FallbackValue=''}"
+                   Padding="10,0,0,0"
+                   Margin="2,0,2,0"
+                   TextColor="Black" />
+        </FlexLayout>
+    </Border>
+</ContentView>

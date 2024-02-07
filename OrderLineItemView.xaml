@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiItemTemplateSelector.OrderLineItemView">
+    <Border Margin="1"
+            Background="White"
+            Padding="4">
+
+        <FlexLayout JustifyContent="SpaceBetween"
+                    AlignItems="Start"
+                    Direction="Row"
+                    Wrap="Wrap">
+            <Label TextColor="Black"
+                   FontAttributes="Bold">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding Line}"
+                                 Value="">
+                        <Setter Property="FlexLayout.Basis"
+                                Value="100%"></Setter>
+
+                    </DataTrigger>
+                </Label.Triggers>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span  Text="{Binding Line.Length, FallbackValue='', StringFormat='{0}'}"></Span>
+                        <Span FontAttributes="Bold"
+                              Text="{Binding Line.Length, FallbackValue='', StringFormat=', {0}'}"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label x:Name="Des2"
+                   FlexLayout.Basis="100%"
+                   FontAttributes="Bold,Italic">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Line.Length,StringFormat='{0}, '}"
+                              FontAttributes="Bold"
+                              TextColor="DarkBlue"></Span>
+                        <Span Text="{Binding Line.Length,StringFormat='{0}, '}"
+                              FontAttributes="Italic"
+                              TextColor="Black"
+                              FontSize="12"></Span>
+                        <Span Text="{Binding Line.Length,StringFormat='{0}, '}"
+                              TextColor="Black"
+                              FontSize="12"></Span>
+
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.Triggers>
+                    <Trigger TargetType="Label"
+                             Property="Text"
+                             Value="">
+                        <Setter Property="FlexLayout.Basis"
+                                Value="Auto"></Setter>
+                    </Trigger>
+                </Label.Triggers>
+            </Label>
+
+            <Label Text="{Binding Line.Length, FallbackValue='', StringFormat=\{0\}}"
+                   TextColor="Black" />
+            <Image IsVisible="True"
+                   Source="singleitem.png"
+                   Aspect="AspectFit"
+                   WidthRequest="20"
+                   HeightRequest="20">
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image"
+                                 Binding="{Binding IsOdd}"
+                                 Value="True">
+                        <Setter Property="Source"
+                                Value="billofmaterial.png" />
+
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>
+
+            <Label Text="{Binding Line.Length, FallbackValue='', StringFormat=Emp: \{0\}}"
+                   FlexLayout.Shrink="0"
+                   TextColor="Black" />
+
+            <Label Text="{Binding Line.Length, FallbackValue='', StringFormat=x\{0\}}"
+                   TextColor="Red">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding Line.Length}"
+                                 Value="0">
+                        <Setter Property="TextColor"
+                                Value="Blue" />
+                    </DataTrigger>
+                </Label.Triggers>
+
+            </Label>
+
+        </FlexLayout>
+    </Border>
+</ContentView>
